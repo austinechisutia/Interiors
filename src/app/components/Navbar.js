@@ -11,7 +11,7 @@ export default function Navbar() {
 
       {/* MIDDLE - Logo */}
       <div className="text-lg md:text-xl lg:text-2xl font-bold">
-        MyLogo
+        Lavly
       </div>
 
       {/* RIGHT - Icons */}
