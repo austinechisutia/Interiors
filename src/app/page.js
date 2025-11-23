@@ -1,3 +1,4 @@
+import { CartProvider } from './components/CartContext';
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Categories from "./components/Categories";
@@ -8,12 +9,14 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      <Hero />
-      <Categories />
-      <PopularProducts />
-      <Premium />
-      <Footer />
+      <CartProvider>
+        <Navbar />
+        <Hero />
+        <Categories />
+        <PopularProducts />
+        <Premium />
+        <Footer />
+      </CartProvider>
     </div>
   );
 }

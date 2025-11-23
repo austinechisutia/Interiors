@@ -1,4 +1,6 @@
-import React from "react";
+"use client"
+import React from 'react';
+import { useCart } from './CartContext';
 import Image1 from "./assets/cat10.jpg";
 import Image2 from "./assets/cat7.jpg";
 import Image3 from "./assets/cat6.jpg";
@@ -63,6 +65,11 @@ export default function Categories() {
     ]
   }
 ];
+
+
+const { addItem } = useCart();
+
+
   return (
     <section className="w-full px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 mt-12 sm:mt-16 md:mt-20 border-b border-gray-300">
       {/* TITLE */}
@@ -120,7 +127,8 @@ export default function Categories() {
        <div>
 
        {product.subTags.map((subTag, index) => (
-          <div className="flex items-center justify-left gap-4 px-3 py-2 rounded-full mt-2">
+          <div   key={index}
+          className="flex items-center justify-left gap-4 px-3 py-2 rounded-full mt-2">
                 {subTag.icon}
          <p className="text-gray-500 text-lg flex items-center gap-1">
               {subTag.name}
@@ -146,7 +154,7 @@ export default function Categories() {
 
     {/* RIGHT COLUMN - Images */}
    <div className="lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-  <div>
+  <div onClick={addItem}>
     <img src={Image1.src} alt="Category 1" className="w-full h-48 sm:h-64 md:h-72 lg:h-80 object-cover rounded-lg" />
     <div className="flex justify-between items-center mt-2">
       <span className="font-medium text-sm sm:text-base">Product Name</span>
