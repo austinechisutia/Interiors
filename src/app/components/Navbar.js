@@ -11,14 +11,19 @@ export default function Navbar() {
 
       {/* MIDDLE - Logo */}
       <div className="text-lg md:text-xl lg:text-2xl font-bold">
-        Lavly
+        Logo
       </div>
 
       {/* RIGHT - Icons */}
       <div className="flex items-center gap-3 md:gap-4">
         <FiSearch size={20} className="md:w-6 md:h-6 cursor-pointer" />
         <FiUser size={20} className="md:w-6 md:h-6 cursor-pointer" />
-        <FiShoppingCart size={20} className="md:w-6 md:h-6 cursor-pointer" />
+         <div className="relative cursor-pointer">
+    <FiShoppingCart size={20} className="md:w-6 md:h-6" />
+    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+      0
+    </span>
+  </div>
       </div>
     </nav>
   );
