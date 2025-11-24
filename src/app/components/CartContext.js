@@ -6,24 +6,21 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const CartContext = createContext();
 
-
-
-// Function to get the initial count from Local Storage
-const getInitialCount = () => {
-  const savedCount = localStorage.getItem('cartItemCount');
-  return savedCount ? parseInt(savedCount, 10) : 0;
-};
-
 export const CartProvider = ({ children }) => {
-  // Use the function to set the initial state
   const [itemCount, setItemCount] = useState(0);
 
+  // Hydrate from localStorage on mount (client-side only)
   useEffect(() => {
-    // This runs every time 'itemCount' changes
+    const savedCount = localStorage.getItem('cartItemCount');
+    if (savedCount) {
+      setItemCount(parseInt(savedCount, 10));
+    }
+  }, []); // Empty dependency array = runs once on mount
+
+  useEffect(() => {
     localStorage.setItem('cartItemCount', itemCount.toString());
     console.log(`Saved count: ${itemCount} to Local Storage.`);
   }, [itemCount]); // Dependency Array: run effect when itemCount changes
-  // ====================================================================
 
   const addItem = () => {
     setItemCount(prevCount => prevCount + 1);
@@ -44,5 +41,3 @@ export const CartProvider = ({ children }) => {
 export const useCart = () => {
   return useContext(CartContext);
 };
-
-
