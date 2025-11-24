@@ -16,9 +16,8 @@ const getInitialCount = () => {
 
 export const CartProvider = ({ children }) => {
   // Use the function to set the initial state
-  const [itemCount, setItemCount] = useState(getInitialCount);
+  const [itemCount, setItemCount] = useState(0);
 
-  // === 🛑 CORE CHANGE: Use useEffect to sync state to Local Storage 🛑 ===
   useEffect(() => {
     // This runs every time 'itemCount' changes
     localStorage.setItem('cartItemCount', itemCount.toString());
